@@ -19,10 +19,10 @@ ARG VROOM_EXPRESS_RELEASE=master
 RUN echo "Cloning and installing vroom-express release/branch ${VROOM_EXPRESS_RELEASE}..." && \
     git clone --branch $VROOM_EXPRESS_RELEASE --single-branch https://github.com/VROOM-Project/vroom-express.git
 
-ARG VROOM_RELEASE=master
+ARG VROOM_RELEASE=feature/service-times-per-vehicle
 
 RUN echo "Cloning and installing vroom release/branch ${VROOM_RELEASE}..." && \
-    git clone --branch $VROOM_RELEASE  --single-branch --recurse-submodules https://github.com/VROOM-Project/vroom.git && \
+    git clone --branch $VROOM_RELEASE  --single-branch --recurse-submodules https://github.com/Bloemendaal/vroom.git && \
     cd vroom && \
     make -C /vroom/src -j$(nproc)
 
