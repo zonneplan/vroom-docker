@@ -2,6 +2,7 @@
 # and every 1st and 15th of the month
 name: Master push
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 1,15 * *"
   push:
