@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://assets.zonneplan.nl/logo/zonneplan-logo-green.svg" width="300" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://www.zonneplan.nl" target="_blank"><img src="https://assets.zonneplan.nl/logo/zonneplan-logo-green.svg" width="300" alt="Zonneplan Logo"></a></p>
 
 # zonneplan/vroom-docker
 
