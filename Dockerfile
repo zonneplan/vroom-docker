@@ -22,7 +22,7 @@ RUN echo "Cloning and installing vroom-express release/branch ${VROOM_EXPRESS_RE
 ARG VROOM_RELEASE=feature/try-adding-service-duration
 
 RUN echo "Cloning and installing vroom release/branch ${VROOM_RELEASE}..." && \
-    git clone --branch $VROOM_RELEASE  --single-branch --recurse-submodules https://github.com/Bloemendaal/vroom.git && \
+    git clone --branch $VROOM_RELEASE  --single-branch --recurse-submodules https://github.com/zonneplan/vroom.git && \
     cd vroom && \
     make -C /vroom/src -j$(nproc)
 
