@@ -3,14 +3,14 @@ name: Release docker image
 on:
   push:
     branches-ignore:
-      - '*'
+      - "*"
     tags:
-      - '*'
+      - "*"
     paths-ignore:
-      - '.gitignore'
-      - 'docker-compose.yml'
-      - 'LICENSE'
-      - '**.md'
+      - ".gitignore"
+      - "docker-compose.yml"
+      - "LICENSE"
+      - "**.md"
 
 jobs:
   build_test_publish:
@@ -22,15 +22,15 @@ jobs:
       # sure there's better ways, but not having the patience for the mess
       - name: vroom tag
         id: vroom_tag
-        run: echo "TAG_VROOM=$(curl --silent 'https://api.github.com/repos/VROOM-Project/vroom/tags' | jq -r '.[0].name')" >> $GITHUB_OUTPUT
+        run: echo "TAG_VROOM=$(curl --silent 'https://api.github.com/repos/zonneplan/vroom/tags' | jq -r '.[0].name')" >> $GITHUB_OUTPUT
 
       - name: vroom-express tag
         id: vroom_express_tag
         run: echo "TAG_VROOM_EXPRESS=$(curl --silent 'https://api.github.com/repos/VROOM-Project/vroom-express/tags' | jq -r '.[0].name')" >> $GITHUB_OUTPUT
-      
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -40,7 +40,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - uses: docker/build-push-action@v5
         with:
           context: .
@@ -49,6 +49,6 @@ jobs:
             VROOM_RELEASE=${{ steps.vroom_tag.outputs.TAG_VROOM }}
             VROOM_EXPRESS_RELEASE=${{ steps.vroom_express_tag.outputs.TAG_VROOM_EXPRESS }}
           platforms: linux/amd64,linux/arm64
-          tags: ghcr.io/vroom-project/vroom-docker:${{ steps.vroom_tag.outputs.TAG_VROOM }}
+          tags: ghcr.io/zonneplan/vroom-docker:${{ steps.vroom_tag.outputs.TAG_VROOM }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
