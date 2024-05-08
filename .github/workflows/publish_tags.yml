@@ -1,6 +1,7 @@
 # builds and publishes on tag pushes
 name: Release docker image
 on:
+  workflow_dispatch:
   push:
     branches-ignore:
       - "*"
